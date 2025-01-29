@@ -330,7 +330,6 @@ def test(args):
 
     test_pred, test_sents, test_sent_ids = model_test_eval(test_dataloader, model, device)
     print('DONE Test')
-
     with open(args.dev_out, "w+") as f:
       print(f"dev acc :: {dev_acc :.3f}")
       f.write(f"id \t Predicted_Sentiment \n")
