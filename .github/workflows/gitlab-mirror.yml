@@ -1,0 +1,19 @@
+name: Sync GitHub to GitLab
+
+on:
+  push:
+    branches:
+      - main  # Adjust if needed, or use '*' to sync all branches
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Push to GitLab
+        run: |
+          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@code.stanford.edu/ysh2025/public_cs224n_gpt.git
+          git push --mirror gitlab
